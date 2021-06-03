@@ -1,0 +1,92 @@
+body {
+  margin: 0; /*Nulstiller margen*/
+  overflow-x: hidden; /*Tilpasser indholdet til siden*/
+}
+
+
+.more-stuff-grid {
+  padding: 6em 0; /*Angiver padding rundt om sektionerne*/
+  display: grid; /*Opstiller indholdet som grid*/
+  grid-gap: 4em; /*Afstand imellem kolonner*/
+  align-items: center; /*Centrerer teksten ud fra midten af billederne*/
+  grid-template-columns: minmax(1em, 1fr) repeat(2, minmax(250px, 500px)) minmax( /*Angiver størrelsen/breden på teksten og billederne*/
+      1em,
+      1fr
+    );
+}
+
+.from-left { /*Elementer der kommer ind fra venstre side*/
+  grid-column: 2 / 3; /*Placering af indhold*/
+  transform: translateX(-50%);/*Flytter elementerne -50% (venstre)*/
+}
+
+.from-right { /*Elementer der kommer ind fra højre side*/
+  grid-column: 3 / 4; /*Placering af indhold*/
+  transform: translateX(50%); /*Flytter elementerne 50% (højre)*/
+}
+
+.from-left,
+.from-right {
+  transition: opacity 500ms ease-in, transform 600ms ease-in; /*Gør at elementer bruger 500ms på at blive synlige og 600ms på at være på plads - farten på overgangen*/
+  opacity: 0; /*Gør elementerne usynlige*/
+}
+
+.from-left.appear,
+.from-right.appear {
+  transform: translateX(0); /*Får elementerne til at flytte tilbage til deres oprindelige plads i midt af siden*/
+  opacity: 1; /*Gør elementerne synlige*/
+}
+
+.text-right {
+    grid-column: 3 / 4; /*Teksternes placering*/
+}
+
+.text-left {
+    grid-column: 2 / 3; /*Teksternes placering*/
+}
+
+/*Overskrift - h2*/
+.more-stuff-grid h2 {
+    font-family: 'Reenie Beanie', cursive; /*Font*/
+  	font-weight: 400; /*Tekstens tykkelse*/
+    font-size: 45px; /*Tekststørrelse*/
+    margin-bottom: -10px; /*Margen under teksten*/
+}
+
+/*Overskrift - h3*/
+.more-stuff-grid h3 {
+    font-family: 'Reenie Beanie', cursive; /*Font*/
+  	font-weight: 400; /*Tekstens tykkelse*/
+    font-size: 30px; /*Tekststørrelse*/
+  	margin-bottom: -5px; /*Margen under teksten*/
+}
+
+.more-stuff-grid p {
+    font-family: 'Open Sans', sans-serif; /*Font*/
+  	font-size: 15px; /*Tekststørrelse*/
+  	color: black; /*Tekstens farve*/
+}
+
+#graa {
+    background-color: #f0f0f0; /*Baggrundsfarve i hver anden sektion*/
+}
+
+
+
+
+/*BREAKPOINT - 845PX*/
+
+@media screen and (max-width: 845px) {
+    
+    .home-more-stuff {
+        width: 100%; /*Indholdet skal fylde 100%*/
+        text-align: left; /*Indholdet får venstre margen*/
+    }
+    
+    .more-stuff-grid {
+        display: block; /*Placerer sektionerne overpå hinanden og ikke ved siden af hinanden*/
+      	padding-right: 25px; /*Padding i højre side - fjerner ikke baggrundsfarven*/
+      	padding-left: 25px; /*Padding i venstre side - fjerner ikke baggrundsfarven*/
+    }
+
+}
